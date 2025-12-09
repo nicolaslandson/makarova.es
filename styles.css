@@ -37,16 +37,22 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Section */
 .hero {
     background: var(--gradient-1);
-    min-height: 60vh;
+    min-height: 70vh;
     display: flex;
     align-items: flex-end;
     position: relative;
     padding-bottom: 80px;
-    background-image: 
-        var(--gradient-1),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="rgba(255,255,255,0.05)" x="0" y="0" width="1200" height="600"/></svg>');
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(16, 29, 48, 0) 0%,
+            rgba(218, 173, 134, 0.92) 58%,
+            rgba(101, 157, 189, 0.96) 100%
+        ),
+        url('up.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
 
 .hero-content {
@@ -64,7 +70,11 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
     border: 3px solid var(--text-white);
     margin: 0 auto 20px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)),
+        url('avatar.jpg');
+    background-size: cover;
+    background-position: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -225,11 +235,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .approach-img-1 {
-    background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1));
+    background-image:
+        linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
+        url('example.jpg');
 }
 
 .approach-img-2 {
-    background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1));
+    background-image:
+        linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
+        url('book.jpg');
 }
 
 .approach-content {
@@ -337,6 +351,23 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 24px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.5s ease;
+}
+
+.testimonial-body {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.testimonial-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 16px;
+    background-image: url('review.jpg');
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .testimonial.active {
@@ -512,6 +543,21 @@ footer p {
     .testimonial {
         padding: 30px 20px;
     }
+
+    .testimonial-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .testimonial-photo {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.testimonial-photo.photo-2 {
+    background-image: url('review3.png');
 }
 
 @media (max-width: 640px) {
