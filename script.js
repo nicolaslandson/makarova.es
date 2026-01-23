@@ -7,6 +7,7 @@ function showSlide(index) {
     testimonials.forEach((testimonial, i) => {
         testimonial.classList.remove('active');
         dots[i].classList.remove('active');
+        dots[i].removeAttribute('aria-current');
     });
     
     if (index >= testimonials.length) {
@@ -19,6 +20,7 @@ function showSlide(index) {
     
     testimonials[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
+    dots[currentSlide].setAttribute('aria-current', 'true');
 }
 
 dots.forEach((dot, index) => {
@@ -31,6 +33,24 @@ dots.forEach((dot, index) => {
 setInterval(() => {
     showSlide(currentSlide + 1);
 }, 5000);
+
+// Click-to-load YouTube video (improves mobile performance)
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.video-placeholder');
+    if (!btn) return;
+
+    const videoId = btn.getAttribute('data-video-id');
+    if (!videoId) return;
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    iframe.title = 'Презентационное видео Елены Макаровой';
+    iframe.loading = 'lazy';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+
+    btn.replaceWith(iframe);
+});
 
 // Intersection Observer for scroll animations
 const observerOptions = {
