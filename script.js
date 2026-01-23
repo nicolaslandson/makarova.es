@@ -82,6 +82,18 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Floating CTA visibility on scroll (bottom-right)
+function updateFloatingCta() {
+    const cta = document.querySelector('.floating-cta');
+    if (!cta) return;
+
+    const shouldShow = window.scrollY > 250;
+    cta.classList.toggle('is-visible', shouldShow);
+}
+
+window.addEventListener('scroll', updateFloatingCta, { passive: true });
+window.addEventListener('load', updateFloatingCta);
+
 // Add hover effect to cards
 const cards = document.querySelectorAll('.card');
 cards.forEach(card => {
@@ -95,7 +107,7 @@ cards.forEach(card => {
 });
 
 // Button click analytics (placeholder)
-const buttons = document.querySelectorAll('.btn-primary, .btn-resource');
+const buttons = document.querySelectorAll('.btn-primary, .btn-resource, .social-btn, .floating-cta');
 buttons.forEach(button => {
     button.addEventListener('click', function(e) {
         console.log('Button clicked:', this.textContent);
